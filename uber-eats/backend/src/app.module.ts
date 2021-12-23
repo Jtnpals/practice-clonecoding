@@ -9,12 +9,12 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 import { UsersModule } from './users/users.module';
-import { CommonModule } from './common/common.module';
 import { User } from './users/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
 import { JwtMiddleware } from './jwt/jwt.middleware';
 import { AuthModule } from './auth/auth.module';
 import { Verification } from './common/entities/verification.entity';
+import { SendGridModule } from './sendgrid/sendgrid.module';
 
 @Module({
   imports: [
@@ -30,6 +30,10 @@ import { Verification } from './common/entities/verification.entity';
         DB_PASSWORD: Joi.string().required(),
         DB_DATABASE: Joi.string().required(),
         PRIVATE_KEY: Joi.string().required(),
+        SENDGRID_API_KEY: Joi.string().required(),
+        DOMAIN: Joi.string().required(),
+        FROM_EMAIL: Joi.string().required(),
+        TO_EMAIL: Joi.string().required(),
       }),
     }),
     TypeOrmModule.forRoot({
@@ -52,6 +56,12 @@ import { Verification } from './common/entities/verification.entity';
       privateKey: process.env.PRIVATE_KEY,
     }),
     AuthModule,
+    SendGridModule.forRoot({
+      apiKey: process.env.SENDGRID_API_KEY,
+      domain: process.env.DOMAIN,
+      fromEmail: process.env.FROM_EMAIL,
+      toEmail: process.env.TO_EMAIL,
+    }),
   ],
   controllers: [],
   providers: [],

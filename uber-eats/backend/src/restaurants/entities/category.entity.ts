@@ -5,7 +5,7 @@ import { Column, Entity } from 'typeorm';
 
 @ObjectType()
 @Entity()
-export class Restaurant extends CoreEntity {
+export class Category extends CoreEntity {
   @Field(() => String)
   @Column()
   @IsString()

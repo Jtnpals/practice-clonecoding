@@ -1,22 +1,22 @@
 import { DynamicModule, Global, Module } from '@nestjs/common';
 import { CONFIG_OPTIONS } from 'src/common/common.constants';
-import { JwtModuleOptions } from './jwt.interfaces';
-import { JwtService } from './jwt.service';
+import { SendGridModuleOptions } from './sendgrid.interfaces';
+import { SendGridService } from './sendgrid.service';
 
 @Module({})
 @Global()
-export class JwtModule {
-  static forRoot(options: JwtModuleOptions): DynamicModule {
+export class SendGridModule {
+  static forRoot(options: SendGridModuleOptions): DynamicModule {
     return {
-      module: JwtModule,
+      module: SendGridModule,
       imports: [],
-      exports: [JwtService],
+      exports: [SendGridService],
       providers: [
         {
           provide: CONFIG_OPTIONS,
           useValue: options,
         },
-        JwtService,
+        SendGridService,
       ],
     };
   }
