@@ -54,10 +54,10 @@ npm i --save yup
 
 ### TypeORM Migration setting
 
-src/database/database.config.ts 생성
+src/database.config.ts 생성
 
 ```typescript
-# src/database/database.config.ts
+# src/database.config.ts
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import dotenv from 'dotenv';
 import { object, string, number } from 'yup';
@@ -95,7 +95,7 @@ package.json 에 추가
 
 ```json
 "scripts": {
-    "typeorm": "cross-env NODE_ENV=dev node --require ts-node/register ./node_modules/typeorm/cli.js --config src/database/database.config.ts",
+    "typeorm": "cross-env NODE_ENV=dev node --require ts-node/register ./node_modules/typeorm/cli.js --config src/database.config.ts",
     "db:migrate": "npm run typeorm migration:run",
     "db:revert": "npm run typeorm migration:revert",
     "db:create": "npm run typeorm migration:create -- -n",
