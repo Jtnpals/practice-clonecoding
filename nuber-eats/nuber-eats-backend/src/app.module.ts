@@ -5,6 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
 import { config } from './database.config';
+import {
+  ApolloFederationDriver,
+  ApolloFederationDriverConfig,
+} from '@nestjs/apollo';
 
 @Module({
   imports: [
@@ -13,7 +17,8 @@ import { config } from './database.config';
       ignoreEnvFile: process.env.NODE_ENV === 'prod',
     }),
     TypeOrmModule.forRoot(config),
-    GraphQLModule.forRoot({
+    GraphQLModule.forRoot<ApolloFederationDriverConfig>({
+      driver: ApolloFederationDriver,
       autoSchemaFile: true,
     }),
     UsersModule,
