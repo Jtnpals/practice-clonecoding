@@ -106,7 +106,7 @@ package.json 에 추가
 graphql 설치
 
 ```bash
-npm i @nestjs/graphql graphql@^15 apollo-server-express
+npm i @nestjs/graphql @nestjs/apollo graphql apollo-server-express
 ```
 
 app.module.ts 에 typeorm, graphql 추가
