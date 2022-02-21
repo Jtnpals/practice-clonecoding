@@ -13,14 +13,16 @@ const schema = object().shape({
   DB_USERNAME: string().required(),
   DB_PASSWORD: string().required(),
   DB_DATABASE: string().required(),
+  SECRET_KEY: string().required(),
 });
 
-schema.validate({
+export const validationSchema = schema.validate({
   DB_HOST: process.env.DB_HOST,
   DB_PORT: process.env.DB_PORT,
   DB_USERNAME: process.env.DB_USERNAME,
   DB_PASSWORD: process.env.DB_PASSWORD,
   DB_DATABASE: process.env.DB_DATABASE,
+  SECRET_KEY: process.env.SECRET_KEY,
 });
 
 export const config: TypeOrmModuleOptions = {
