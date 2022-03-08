@@ -18,21 +18,17 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "cross-env NODE_ENV=dev node --require ts-node/register ./node_modules/typeorm/cli.js --config src/database.config.ts",
-    "db:migrate": "npm run typeorm migration:run",
-    "db:revert": "npm run typeorm migration:revert",
-    "db:create": "npm run typeorm migration:create -- -n",
-    "db:generate": "npm run typeorm migration:generate -- -n"
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@apollo/gateway": "^0.48.1",
     "@apollo/subgraph": "^0.3.1",
-    "@nestjs/apollo": "^10.0.2",
-    "@nestjs/common": "^8.3.1",
+    "@nestjs/apollo": "^10.0.6",
+    "@nestjs/common": "^8.4.0",
     "@nestjs/config": "^1.2.0",
-    "@nestjs/core": "^8.3.1",
-    "@nestjs/graphql": "^10.0.2",
-    "@nestjs/platform-express": "^8.3.1",
+    "@nestjs/core": "^8.4.0",
+    "@nestjs/graphql": "^10.0.6",
+    "@nestjs/platform-express": "^8.4.0",
     "@nestjs/typeorm": "^8.0.3",
     "@types/bcrypt": "^5.0.0",
     "@types/jsonwebtoken": "^8.5.8",
@@ -41,37 +37,38 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "graphql": "^16.3.0",
+    "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.5.4",
-    "typeorm": "^0.2.42",
-    "yup": "^0.32.11"
+    "ts-morph": "^13.0.3",
+    "typeorm": "^0.2.45"
   },
   "devDependencies": {
-    "@nestjs/cli": "^8.2.1",
-    "@nestjs/schematics": "^8.0.6",
-    "@nestjs/testing": "^8.3.1",
+    "@nestjs/cli": "^8.2.2",
+    "@nestjs/schematics": "^8.0.8",
+    "@nestjs/testing": "^8.4.0",
     "@types/express": "^4.17.13",
-    "@types/jest": "27.4.0",
-    "@types/node": "^17.0.18",
+    "@types/jest": "27.4.1",
+    "@types/node": "^17.0.21",
     "@types/supertest": "^2.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.12.0",
-    "@typescript-eslint/parser": "^5.12.0",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.9.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.5.1",
     "prettier": "^2.5.1",
     "source-map-support": "^0.5.21",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.3",
-    "ts-loader": "^9.2.6",
-    "ts-node": "^10.5.0",
-    "tsconfig-paths": "^3.12.0",
-    "typescript": "^4.5.5"
+    "ts-loader": "^9.2.7",
+    "ts-node": "^10.7.0",
+    "tsconfig-paths": "^3.13.0",
+    "typescript": "^4.6.2"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -80,13 +77,10 @@
       "ts"
     ],
     "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
+    "testRegex": ".spec.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }

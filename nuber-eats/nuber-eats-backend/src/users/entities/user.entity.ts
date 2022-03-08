@@ -4,9 +4,9 @@ import {
   ObjectType,
   registerEnumType,
 } from '@nestjs/graphql';
-import { CoreEntity } from 'src/common/entities/core.entity';
-import { BeforeInsert, Column, Entity } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { CoreEntity } from 'src/common/entities/core.entity';
 import { InternalServerErrorException } from '@nestjs/common';
 import { IsEmail, IsEnum } from 'class-validator';
 
@@ -23,20 +23,21 @@ registerEnumType(UserRole, { name: 'UserRole' });
 @Entity()
 export class User extends CoreEntity {
   @Column()
-  @Field(() => String)
+  @Field(type => String)
   @IsEmail()
   email: string;
 
   @Column()
-  @Field(() => String)
+  @Field(type => String)
   password: string;
 
   @Column({ type: 'enum', enum: UserRole })
-  @Field(() => UserRole)
+  @Field(type => UserRole)
   @IsEnum(UserRole)
   role: UserRole;
 
   @BeforeInsert()
+  @BeforeUpdate()
   async hashPassword(): Promise<void> {
     try {
       this.password = await bcrypt.hash(this.password, 10);
