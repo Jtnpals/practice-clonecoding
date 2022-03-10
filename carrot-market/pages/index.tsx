@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <div className="bg-slate-400 py-10 px-5 grid gap-10  min-h-screen">
+    <div className="bg-slate-400 place-content-center py-10 px-5 grid gap-10 lg:grid-cols-2 xl:grid-cols-3 min-h-screen">
       <div className="bg-white p-6 rounded-2xl shadow-xl">
         <span className="font-semibold text-3xl">Select Item</span>
         <div className="flex justify-between">
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
               <span className="text-sm text-gray-500">Orders</span>
               <span className="font-medium">340</span>
             </div>
-            <div className="h-24 w-24 bg-red-400 rounded-full"></div>
+            <div className="h-24 w-24 bg-red-400 relative -top-5 rounded-full"></div>
             <div className="flex flex-col items-center">
               <span className="text-sm text-gray-500">Spent</span>
               <span className="font-medium">$340</span>
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white p-10 rounded-2xl shadow-xl">
+      <div className="bg-white p-10 rounded-2xl lg:col-span-2 xl:col-span-1 shadow-xl">
         <div className="flex mb-5 justify-between items-center">
           <span>⬅</span>
           <div className="space-x-3">
@@ -65,7 +65,7 @@ const Home: NextPage = () => {
               <button className="p-1.5 bg-blue-200 flex rounded-lg justify-center items-center w-10 font-medium text-xl text-gray-500">
                 -
               </button>
-              <span>1</span>
+              <span>1</span>u
               <button className="p-1.5 bg-blue-200 flex rounded-lg justify-center items-center w-10 font-medium text-xl text-gray-500">
                 +
               </button>
