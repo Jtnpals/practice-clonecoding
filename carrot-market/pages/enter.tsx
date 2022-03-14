@@ -6,10 +6,16 @@ function cls(...classnames: string[]) {
 }
 
 const Enter: NextPage = () => {
+  function getGnbMenu(){
+    retrun {"신상품", "티셔츠", ""}
+  }
   const [method, setMethod] = useState<"email" | "phone">("email");
   const onEmailClick = () => setMethod("email");
   const onPhoneClick = () => setMethod("phone");
+  const gnbMenu = getGnbMenu();
   return (
+
+
     <div className="mt-16 px-4">
       <h3 className="text-3xl font-bold text-center">Enter to Carrot</h3>
       <div className="mt-12">
@@ -36,6 +42,7 @@ const Enter: NextPage = () => {
               )}
               onClick={onPhoneClick}
             >
+              
               Phone
             </button>
           </div>
