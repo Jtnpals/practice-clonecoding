@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { cls } from "../libs/utils";
+import { cls } from "@libs/client/utils";
 import { useRouter } from "next/router";
 
 interface LayoutProps {
@@ -22,7 +22,7 @@ export default function Layout({
   };
   return (
     <div>
-      <div className="bg-white w-full h-12 max-w-xl justify-center text-lg px-10 font-medium  fixed text-gray-800 border-b top-0  flex items-center">
+      <div className="fixed top-0 flex items-center justify-center w-full h-12 max-w-xl px-10 text-lg font-medium text-gray-800 bg-white border-b">
         {canGoBack ? (
           <button onClick={onClick} className="absolute left-4">
             <svg
@@ -47,7 +47,7 @@ export default function Layout({
       </div>
       <div className={cls("pt-12", hasTabBar ? "pb-24" : "")}>{children}</div>
       {hasTabBar ? (
-        <nav className="bg-white max-w-xl text-gray-700 border-t fixed bottom-0 w-full px-10 pb-5 pt-3 flex justify-between text-xs">
+        <nav className="fixed bottom-0 flex justify-between w-full max-w-xl px-10 pt-3 pb-5 text-xs text-gray-700 bg-white border-t">
           <Link href="/">
             <a
               className={cls(
