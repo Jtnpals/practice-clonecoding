@@ -5,7 +5,7 @@ import Button from "@components/button";
 import Input from "@components/input";
 import useMutation from "@libs/client/useMutation";
 import { cls } from "@libs/client/utils";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 interface EnterForm {
   email?: string;
@@ -47,7 +47,7 @@ const Enter: NextPage = () => {
   };
   const router = useRouter();
   useEffect(() => {
-    if (tokenData) {
+    if (tokenData?.ok) {
       router.push("/");
     }
   }, [tokenData, router]);
