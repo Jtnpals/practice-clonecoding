@@ -1,43 +1,25 @@
 import type { NextPage } from "next";
-import FloatingButton from "@components/floating-button";
-import Item from "@components/item";
-import Layout from "@components/layout";
-import useUser from "@libs/client/useUser";
-import Head from "next/head";
-import useSWR from "swr";
-import { Product } from "@prisma/client";
-interface ProductWithCount extends Product {
-  _count: { fav: number };
-}
-interface ProductsResponse {
-  ok: boolean;
-  products: ProductWithCount[];
-}
+import FloatingButton from "../components/floating-button";
+import Item from "../components/item";
+import Layout from "../components/layout";
 
 const Home: NextPage = () => {
-  const { user, isLoading } = useUser();
-  const { data } = useSWR<ProductsResponse>("/api/products");
-  console.log(data);
-  console.log(user);
   return (
     <Layout title="홈" hasTabBar>
-      <Head>
-        <title>Home</title>
-      </Head>
       <div className="flex flex-col space-y-5 divide-y">
-        {data?.products?.map((product) => (
+        {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => (
           <Item
-            id={product.id}
-            key={product.id}
-            title={product.name}
-            price={product.price}
+            id={i}
+            key={i}
+            title="iPhone 14"
+            price={99}
             comments={1}
-            hearts={product._count.fav}
+            hearts={1}
           />
         ))}
-        <FloatingButton href="/products/upload">
+        <FloatingButton href="/items/upload">
           <svg
-            className="w-6 h-6"
+            className="h-6 w-6"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import FloatingButton from "@components/floating-button";
-import Layout from "@components/layout";
+import FloatingButton from "../../components/floating-button";
+import Layout from "../../components/layout";
 
 const Live: NextPage = () => {
   return (
@@ -9,9 +9,9 @@ const Live: NextPage = () => {
       <div className=" divide-y-[1px] space-y-4">
         {[1, 1, 1, 1, 1, 1, 1].map((_, i) => (
           <Link key={i} href={`/live/${i}`}>
-            <a className="block px-4 pt-4">
+            <a className="pt-4 block  px-4">
               <div className="w-full rounded-md shadow-sm bg-slate-300 aspect-video" />
-              <h1 className="mt-2 text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl mt-2 font-bold text-gray-900">
                 Galaxy S50
               </h1>
             </a>

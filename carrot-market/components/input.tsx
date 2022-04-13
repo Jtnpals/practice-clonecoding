@@ -4,9 +4,9 @@ interface InputProps {
   label: string;
   name: string;
   kind?: "text" | "phone" | "price";
-  type: string;
   register: UseFormRegisterReturn;
-  required?: boolean;
+  type: string;
+  required: boolean;
 }
 
 export default function Input({
@@ -44,8 +44,8 @@ export default function Input({
           <input
             id={name}
             {...register}
-            type={type}
             required={required}
+            type={type}
             className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none pl-7 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
           />
           <div className="absolute right-0 flex items-center pr-3 pointer-events-none">
@@ -61,8 +61,8 @@ export default function Input({
           <input
             id={name}
             {...register}
-            type={type}
             required={required}
+            type={type}
             className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md rounded-l-none shadow-sm appearance-none focus:outline-none focus:ring-orange-500 focus:border-orange-500"
           />
         </div>
