@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export interface ResponseType {
   ok: boolean;
@@ -16,7 +16,7 @@ export default function withHandler(
     try {
       await fn(req, res);
     } catch (error) {
-      console.error(error);
+      console.log(error);
       return res.status(500).json({ error });
     }
   };
