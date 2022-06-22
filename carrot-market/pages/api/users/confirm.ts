@@ -27,4 +27,10 @@ async function handler(
   res.json({ ok: true });
 }
 
-export default withSession(withHandler("POST", handler));
+export default withSession(
+  withHandler({
+    method: "POST",
+    handler,
+    isPrivate: false,
+  })
+);

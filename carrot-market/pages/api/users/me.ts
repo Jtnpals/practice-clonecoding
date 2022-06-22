@@ -20,4 +20,9 @@ async function handler(
   });
 }
 
-export default withSession(withHandler("GET", handler));
+export default withSession(
+  withHandler({
+    method: "GET",
+    handler,
+  })
+);

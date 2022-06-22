@@ -2,8 +2,11 @@ import type { NextPage } from "next";
 import FloatingButton from "@components/floating-button";
 import Item from "@components/item";
 import Layout from "@components/layout";
+import useUser from "@libs/client/useUser";
 
 const Home: NextPage = () => {
+  const { user, isLoading } = useUser();
+  console.log(user, isLoading);
   return (
     <Layout title="홈" hasTabBar>
       <div className="flex flex-col space-y-5 divide-y">
@@ -19,7 +22,7 @@ const Home: NextPage = () => {
         ))}
         <FloatingButton href="/items/upload">
           <svg
-            className="h-6 w-6"
+            className="w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
