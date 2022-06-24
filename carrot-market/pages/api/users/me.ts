@@ -22,7 +22,7 @@ async function handler(
 
 export default withSession(
   withHandler({
-    method: "GET",
+    methods: ["GET"],
     handler,
   })
 );

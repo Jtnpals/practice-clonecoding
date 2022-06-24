@@ -29,7 +29,7 @@ async function handler(
 
 export default withSession(
   withHandler({
-    method: "POST",
+    methods: ["POST"],
     handler,
     isPrivate: false,
   })
