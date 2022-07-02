@@ -31,11 +31,11 @@ async function handler(
             select: {
               id: true,
               name: true,
-
               avatar: true,
             },
           },
         },
+        take: 10,
       },
       _count: {
         select: {
