@@ -4,6 +4,7 @@ import useMutation from "@libs/client/useMutation";
 import { cls } from "@libs/client/utils";
 import type { Product, User } from "@prisma/client";
 import type { NextPage } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR, { useSWRConfig } from "swr";
@@ -36,9 +37,21 @@ const ItemDetail: NextPage = () => {
     <Layout canGoBack>
       <div className="px-4 py-4">
         <div className="mb-8">
-          <div className="h-96 bg-slate-300" />
+          <div className="relative pb-80">
+            <Image
+              layout="fill"
+              src={`https://imagedelivery.net/ybRE7NY-4BT5HYdSjW5Yqw/${data?.product.image}/public`}
+              className="object-cover h-96 bg-slate-300"
+            />
+          </div>
           <div className="flex items-center py-3 space-x-3 border-t border-b cursor-pointer">
-            <div className="w-12 h-12 rounded-full bg-slate-300" />
+            <Image
+              width={48}
+              height={48}
+              alt="avatar"
+              src={`https://imagedelivery.net/ybRE7NY-4BT5HYdSjW5Yqw/${data?.product?.user?.avatar}/thumbnail`}
+              className="w-12 h-12 rounded-full bg-slate-300"
+            />
             <div>
               <p className="text-sm font-medium text-gray-700">
                 {data?.product?.user?.name}

@@ -175,5 +175,4 @@ model Message {
   message   String   @db.MediumText
   stream    Stream   @relation(fields: [streamId], references: [id])
   streamId  Int
-
 }
