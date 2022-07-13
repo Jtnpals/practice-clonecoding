@@ -7,6 +7,17 @@ import { cls } from "@libs/client/utils";
 import useMutation from "@libs/client/useMutation";
 import Router, { useRouter } from "next/router";
 
+import dynamic from "next/dynamic";
+
+const Hello = dynamic(() => import("@components/hello"), {
+  ssr: false,
+  loading: () => <span>Loading...</span>,
+});
+// const Hello = dynamic(() => import("@components/hello"), {
+//   ssr: false,
+//   suspense:true,
+// });
+
 interface EnterForm {
   email?: string;
   phone?: string;
@@ -121,14 +132,17 @@ const Enter: NextPage = () => {
                 />
               ) : null}
               {method === "phone" ? (
-                <Input
-                  register={register("phone", { required: true })}
-                  name="phone"
-                  label="Phone number"
-                  type="number"
-                  kind="phone"
-                  required
-                />
+                <>
+                  <Input
+                    register={register("phone", { required: true })}
+                    name="phone"
+                    label="Phone number"
+                    type="number"
+                    kind="phone"
+                    required
+                  />
+                  <Hello />
+                </>
               ) : null}
               {method === "email" ? (
                 <Button text={submitting ? "Loading ..." : "Get login link"} />
