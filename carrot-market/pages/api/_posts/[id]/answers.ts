@@ -1,0 +1,42 @@
+import withHandler, { ResponseType } from "@libs/server/withHandler";
+import type { NextApiRequest, NextApiResponse } from "next";
+import client from "@libs/server/client";
+import withSession from "@libs/server/withSession";
+
+async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ResponseType>
+) {
+  const {
+    query: { id },
+    session: { user },
+    body: { answer },
+  } = req;
+
+  const newAnswer = await client.answer.create({
+    data: {
+      user: {
+        connect: {
+          id: user?.id,
+        },
+      },
+      post: {
+        connect: {
+          id: +id!,
+        },
+      },
+      answer,
+    },
+  });
+  res.json({
+    ok: true,
+    answer: newAnswer,
+  });
+}
+
+export default withSession(
+  withHandler({
+    methods: ["POST"],
+    handler,
+  })
+);
