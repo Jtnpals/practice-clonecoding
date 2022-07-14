@@ -23,10 +23,11 @@ export default function Layout({
   const onClick = () => {
     router.back();
   };
+  const pageTitle = `${seoTitle} | Carrot Market`;
   return (
     <div>
       <Head>
-        <title>{seoTitle} | Carrot Market</title>
+        <title>{pageTitle}</title>
       </Head>
       <div className="fixed top-0 flex items-center justify-center w-full h-12 max-w-xl px-10 text-lg font-medium text-gray-800 bg-white border-b">
         {canGoBack ? (
