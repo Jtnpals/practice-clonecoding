@@ -2,7 +2,7 @@ import FloatingButton from "@components/floating-button";
 import Item from "@components/item";
 import Layout from "@components/layout";
 import type { Product } from "@prisma/client";
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import useSWR, { SWRConfig } from "swr";
 import client from "@libs/server/client";
 
@@ -71,9 +71,10 @@ const Page: NextPage<{ products: ProductWithCount[] }> = ({ products }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx: GetServerSideProps): Promise<{
+  props: { products: ProductWithCount[] };
+}> {
   const products = await client.product.findMany({});
-  console.log(products);
   return { props: { products: JSON.parse(JSON.stringify(products)) } };
 }
 
