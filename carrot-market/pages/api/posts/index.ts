@@ -24,6 +24,8 @@ async function handler(
         },
       },
     });
+    await res.revalidate("/community");
+
     res.json({
       ok: true,
       post,
@@ -37,6 +39,9 @@ async function handler(
     const parsedLatitude = parseFloat(latitude!.toString());
     const parsedLongitude = parseFloat(longitude!.toString());
     const posts = await client.post.findMany({
+      orderBy: {
+        id: "desc",
+      },
       include: {
         user: {
           select: {
